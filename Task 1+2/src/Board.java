@@ -14,7 +14,7 @@ public class Board {
     *
     * */
 
-    Board(String[] fielddata, String[] chanceData){
+    Board(String[] fielddata, String[] chanceData) {
         createFields(fielddata);
         createCards(chanceData);
     }
