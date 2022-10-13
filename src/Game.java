@@ -6,6 +6,7 @@ public class Game {
     private TextUI textUI = new TextUI();
     private ArrayList<Player> players = new ArrayList();
     private Board board;
+    private ArrayList<ChanceCard> chanceCards = new ArrayList();
     private Player currentPlayer;
 
     public void gameSetup() {
@@ -22,21 +23,14 @@ public class Game {
         // **********************
 
         String[] fieldData = fileIO.readBoardData();
+        String[] chanceData = fileIO.readChanceData();
 
         /*TODO: tilføj en linie der minder om den lige oven over.
            Her skal der dog loades Chance-kort data istedet for felt data (jvf. Task 2.d)
          * */
 
-
-
         /*TODO: ændr dette konstruktor kald til Board, sådan at  Chance-kort data kommer med som argument (jvf. Task 2.d) */
-        board = new Board(fieldData);
-
-
-
-
-
-
+        board = new Board(fieldData, chanceData);
 
         runGame();
 
@@ -64,8 +58,8 @@ public class Game {
         }
 
     }
-    private void throwAndMove(){
-
+    private void throwAndMove() {
+        //System.out.println(currentPlayer.getBalance());
         System.out.println("Det er "+currentPlayer.getName()+"'s tur. \n"
                 +currentPlayer
                 + "står på felt "
@@ -77,6 +71,7 @@ public class Game {
         int newPos = currentPlayer.updatePos(result);
         Field f = board.getField(newPos);
         landAndAct(f);
+        //System.out.println(currentPlayer.getBalance());
     }
 
     private void landAndAct(Field f){

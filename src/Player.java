@@ -1,16 +1,17 @@
+import java.util.ArrayList;
+
 public class Player {
     private String name;
     private BankAccount account;
     private int startPosition = 1;
     private int currentPosition = startPosition;
+    private ArrayList<Property> deeds = new ArrayList<>();
 /*TODO: tilføj en liste til at holde på det spilleren har købt (jvf. Task 1.c)*/
 
     public Player(String name, int amount) {
         this.name = name;
         account = new BankAccount(amount);
     }
-
-
 
     public String getName() {
         return name;
@@ -24,6 +25,13 @@ public class Player {
         return account.getBalance();
     }
 
+    public void addDeed(Property deed) {
+        deeds.add(deed);
+    }
+
+    public ArrayList<Property> getDeeds() {
+        return deeds;
+    }
 
     @Override
     public String toString() {
@@ -64,5 +72,13 @@ public class Player {
     }
     public void recieve(int amount){
         this.account.doTransaction(amount);
+    }
+
+    public int getPropertyValue() {
+        int value = 0;
+        for (Property deed : deeds) {
+            value += deed.getCost();
+        }
+        return value;
     }
 }

@@ -1,8 +1,9 @@
-
+import java.util.ArrayList;
 
 public class Board {
 
     private Field[] fields = new Field[40];
+    private ChanceCard[] chanceCards = new ChanceCard[10];
 
     /*
     * TODO:
@@ -12,8 +13,9 @@ public class Board {
     *
     * */
 
-    Board(String[] fielddata){
+    Board(String[] fielddata, String[] chanceData){
         createFields(fielddata);
+        createCards(chanceData);
     }
 
     private Field[] createFields(String[] data){
@@ -58,6 +60,22 @@ public class Board {
         }
         return fields;
     }
+    private ArrayList<ChanceCard> createCards(String[] data){
+        ArrayList<ChanceCard> cards = new ArrayList<>();
+        for (int i = 0; i < chanceCards.length; i++) {
+            String s = data[i];
+            String[] values = s.split(",");
+            String name = values[0].trim();
+            int cost = Integer.parseInt(values[1].trim());
+            int payout = Integer.parseInt(values[2].trim());
+            ChanceCard c = new ChanceCard(name, cost, payout);
+            cards.add(c);
+
+            chanceCards[i] = c;
+        }
+        return cards;
+    }
+
     public Field getField(int id) {
         id--;
         if (id < 0 || id >= fields.length) {
