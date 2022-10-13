@@ -14,6 +14,12 @@ public class Chance extends Field {
     public String onAccept(Player p){
         ChanceCard c = Board.getChanceCard();
 
+        if (c.getCost() > 0) {
+            p.pay(c.getCost());
+        } else {
+            p.recieve(c.getPayout());
+        }
+
         return "Du har trukket: " + c.toString();
     }
 
