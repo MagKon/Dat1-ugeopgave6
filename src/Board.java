@@ -3,7 +3,8 @@ import java.util.ArrayList;
 public class Board {
 
     private Field[] fields = new Field[40];
-    private ChanceCard[] chanceCards = new ChanceCard[10];
+    private static ChanceCard[] chanceCards = new ChanceCard[10];
+    private static int chanceCardIndex = 0;
 
     /*
     * TODO:
@@ -74,6 +75,15 @@ public class Board {
             chanceCards[i] = c;
         }
         return cards;
+    }
+
+    public static ChanceCard getChanceCard(){
+        ChanceCard c = chanceCards[chanceCardIndex];
+        chanceCardIndex++;
+        if(chanceCardIndex == chanceCards.length){
+            chanceCardIndex = 0;
+        }
+        return c;
     }
 
     public Field getField(int id) {

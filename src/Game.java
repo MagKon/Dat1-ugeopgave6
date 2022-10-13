@@ -65,7 +65,7 @@ public class Game {
                 + "står på felt "
                 +currentPlayer.getPosition());
 
-        int result = 4;//Dice.rollDiceSum();//Det er denne linie du skal ændre for at teste forskellige felter!
+        int result = 2;//Dice.rollDiceSum();//Det er denne linie du skal ændre for at teste forskellige felter!
 
 
         int newPos = currentPlayer.updatePos(result);

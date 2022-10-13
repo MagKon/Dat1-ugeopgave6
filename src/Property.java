@@ -26,8 +26,6 @@ public class Property extends Field{
             option = "payRent";
             s += "\n "+this.owner+" ejer allerede "+this.getLabel();
             s += "\n Du skal betale "+this.getIncome()+" i husleje. Tast J for at acceptere:";
-
-
         }
         return s;
     }

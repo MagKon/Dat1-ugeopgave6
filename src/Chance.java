@@ -10,9 +10,11 @@ public class Chance extends Field {
         return s;
     }
     //Todo:implementer denne metode sådan at der bliver trukket et kort fra bunken (se Task 2.b)
-    public String onAccept(){
+    @Override
+    public String onAccept(Player p){
+        ChanceCard c = Board.getChanceCard();
 
-        return "";
+        return "Du har trukket: " + c.toString();
     }
 
 }
