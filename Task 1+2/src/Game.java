@@ -32,6 +32,16 @@ public class Game {
         /*TODO: ændr dette konstruktor kald til Board, sådan at  Chance-kort data kommer med som argument (jvf. Task 2.d) */
         board = new Board(fieldData, chanceData);
 
+        Field somePlot = board.getField(6);//et rederi
+        players.get(0).buy(somePlot.cost);
+        players.get(0).addDeed((Property)somePlot);
+
+        somePlot = board.getField(40);//rådhuspladsen
+        players.get(0).buy(somePlot.cost);
+        players.get(0).addDeed((Property)somePlot);
+
+        players.get(0).recieve(20000);//med denne linje modtager Egon et beløb uden skøde
+
         runGame();
 
     }
@@ -65,7 +75,7 @@ public class Game {
                 + "står på felt "
                 +currentPlayer.getPosition());
 
-        int result = 2;//Dice.rollDiceSum();//Det er denne linie du skal ændre for at teste forskellige felter!
+        int result = 4;//Dice.rollDiceSum();//Det er denne linie du skal ændre for at teste forskellige felter!
 
 
         int newPos = currentPlayer.updatePos(result);
